@@ -11,8 +11,6 @@ services:
     # Publish ports to host
     ports:
       - "3930:8080"
-    volumes:
-      - ./app:/app
   # KIE Execution server service 1
   kie-server-1:
     # Define image
