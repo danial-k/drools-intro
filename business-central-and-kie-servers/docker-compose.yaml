@@ -50,7 +50,7 @@ services:
       - "drools-workbench"
     command: ["/wait-for-workbench.sh"]
   # KIE Execution server service 3
-  kie-server-2:
+  kie-server-3:
     # Define image
     image: "jboss/kie-server-showcase:7.18.0.Final"
     # Publish ports to host
