@@ -42,13 +42,13 @@ curl --request POST \
   --data '{"name": "ExampleSpace", "description": "Example space for projects.", "owner": "admin", "defaultGroupId": "ExampleSpace"}'
 ```
 
-Note that the task of importing a project into Business Central may also be accomplished by making a ```POST``` request to http://127.0.0.1:3931/business-central/rest/spaces/MySpace/git/clone with the following payload (assuming the space has already been created): 
-```json
-{
-  "name": "Example Project",
-  "description": "Example Project imported from GitHub",
-  "gitURL": "https://github.com/danial-k/drools-sample.git"
-}
+To trigger an import request into the newly created space, execute the following:
+```shell
+curl --request POST \
+  -u admin:admin \
+  --url 'http://127.0.0.1:3930/business-central/rest/spaces/ExampleSpace/git/clone' \
+  --header 'Content-Type: application/json' \
+  --data '{"name": "ExampleProject", "description": "Example Project", "gitURL": "https://github.com/danial-k/drools-sample.git"}'
 ```
 
 ### Build and deploy to Execution Servers
