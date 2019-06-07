@@ -25,7 +25,22 @@ curl -u admin:admin -H 'Accept:application/json' http://127.0.0.1:3933/kie-serve
 To browse the API documentation of the KIE execution servers, visit http://127.0.0.1:3931/kie-server/docs.  This will provide Swagger UI formatted endpoint definitions with examples.  To browse the API documentation of Business Central, visit http://127.0.0.1:3930/business-central/docs, also in Swagger format.
 
 ### Importing projects
-To import a project, visit the ```Designs``` > ```Projects``` page and choose Import Project.  In the ```Repository URL``` enter https://github.com/danial-k/drools-sample.git.  Note that imported projects should have ```kjar``` (Knowledge JAR) packaging as part of a valid ```pom.xml``` file and a ```kmodule.xml``` META-INF file defined.  Furthermore, the Business Central import utility will only use the ```master``` branch.  Once the project is displayed in the ```Import Projects```, select the project and choolse ```Ok```.  This will initiate the asset indexing process and initialise the project in Business Central's internal git repository.
+#### Manually via Business Central UI
+To import a project, visit the ```Designs``` > ```Projects``` page and choose Import Project.  In the ```Repository URL``` enter https://github.com/danial-k/drools-sample.git.  Note that imported projects should have ```kjar``` (Knowledge JAR) packaging as part of a valid ```pom.xml``` file and a ```kmodule.xml``` META-INF file defined.  Furthermore, the Business Central import utility will only use the ```master``` branch.  Once the project is displayed in the ```Import Projects```, select the project and choolse ```Ok```.  This will initiate the asset indexing process and initialise the project in Business Central's internal git repository.  Note that on login, the default spaces ```MySpace``` is created.
+
+#### Automated via API calls
+Ensure that at least one space exists in which projects may be created.  Without logging in, a default space will not be created.  To retrieve the current spaces in managed by Business Central:
+```bash
+curl -u admin:admin -H 'Accept:application/json' http://127.0.0.1:3930/business-central/rest/spaces
+```
+If the response is empty, create a new space with:
+```bash
+curl --request POST \
+  -u admin:admin \
+  --url http://127.0.0.1:3930/business-central/rest/spaces \
+  --header 'Content-Type: application/json' \
+  --data '{"name": "ExampleSpace", "description": "Example space for projects.", "owner": "admin", "defaultGroupId": "ExampleSpace"}'
+```
 
 Note that the task of importing a project into Business Central may also be accomplished by making a ```POST``` request to http://127.0.0.1:3931/business-central/rest/spaces/MySpace/git/clone with the following payload (assuming the space has already been created): 
 ```json
