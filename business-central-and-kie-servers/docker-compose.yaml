@@ -1,0 +1,72 @@
+# Set version of docker compose syntax, use most recent where possible
+version: '3'
+
+# Define services which will become separate containers,
+# sharing a single network with DNS resolvable hostnames
+services:
+  # Business Central Workbench service
+  drools-workbench:
+    # Define image
+    image: "jboss/drools-workbench-showcase:7.18.0.Final"
+    # Publish ports to host
+    ports:
+      - "3930:8080"
+    volumes:
+      - ./app:/app
+  # KIE Execution server service 1
+  kie-server-1:
+    # Define image
+    image: "jboss/kie-server-showcase:7.18.0.Final"
+    # Publish ports to host
+    ports:
+      - "3931:8080"
+    volumes:
+      - ./wait-for-workbench.sh:/wait-for-workbench.sh
+    # Set environment variables
+    environment:
+      - KIE_SERVER_LOCATION=http://kie-server-1:8080/kie-server/services/rest/server
+      - KIE_SERVER_CONTROLLER=http://drools-workbench:8080/business-central/rest/controller
+      - KIE_SERVER_USER=admin
+      - KIE_SERVER_PWD=admin
+      - KIE_MAVEN_REPO=http://drools-workbench:8080/business-central/maven2
+    depends_on:
+      - "drools-workbench"
+    command: ["/wait-for-workbench.sh"]
+  # KIE Execution server service 2
+  kie-server-2:
+    # Define image
+    image: "jboss/kie-server-showcase:7.18.0.Final"
+    # Publish ports to host
+    ports:
+      - "3932:8080"
+    volumes:
+      - ./wait-for-workbench.sh:/wait-for-workbench.sh
+    # Set environment variables
+    environment:
+      - KIE_SERVER_LOCATION=http://kie-server-2:8080/kie-server/services/rest/server
+      - KIE_SERVER_CONTROLLER=http://drools-workbench:8080/business-central/rest/controller
+      - KIE_SERVER_USER=admin
+      - KIE_SERVER_PWD=admin
+      - KIE_MAVEN_REPO=http://drools-workbench:8080/business-central/maven2
+    depends_on:
+      - "drools-workbench"
+    command: ["/wait-for-workbench.sh"]
+  # KIE Execution server service 3
+  kie-server-2:
+    # Define image
+    image: "jboss/kie-server-showcase:7.18.0.Final"
+    # Publish ports to host
+    ports:
+      - "3933:8080"
+    volumes:
+      - ./wait-for-workbench.sh:/wait-for-workbench.sh
+    # Set environment variables
+    environment:
+      - KIE_SERVER_LOCATION=http://kie-server-3:8080/kie-server/services/rest/server
+      - KIE_SERVER_CONTROLLER=http://drools-workbench:8080/business-central/rest/controller
+      - KIE_SERVER_USER=admin
+      - KIE_SERVER_PWD=admin
+      - KIE_MAVEN_REPO=http://drools-workbench:8080/business-central/maven2
+    depends_on:
+      - "drools-workbench"
+    command: ["/wait-for-workbench.sh"]
