@@ -6,7 +6,7 @@ In this introductory course, the various components of Drools including the Busi
 
 ## Business Central and KIE execution servers
 ### Starting servers
-In this example, rules will be created in Business Central and deployed to multiple KIE execution servers. Docker Compose will be used to spin up the containers.  The two required files are located in the [business-central-and-kie-servers](business-central-and-kie-servers] directory in this project.  To start the containers from a local directory containing the [docker-compose.yaml](business-central-and-kie-servers/docker-compose.yaml) file, run:
+In this example, rules will be created in Business Central and deployed to multiple KIE execution servers. Docker Compose will be used to spin up the containers.  The two required files are located in the [business-central-and-kie-servers](business-central-and-kie-servers) directory in this project.  To start the containers from a local directory containing the [docker-compose.yaml](business-central-and-kie-servers/docker-compose.yaml) file, run:
 
 ```shell
 docker-compose up
