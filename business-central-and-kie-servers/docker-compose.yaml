@@ -29,7 +29,7 @@ services:
       - KIE_MAVEN_REPO=http://drools-workbench:8080/business-central/maven2
     depends_on:
       - "drools-workbench"
-    command: ["/wait-for-workbench.sh"]
+    command: ["bash", "/wait-for-workbench.sh"]
   # KIE Execution server service 2
   kie-server-2:
     # Define image
@@ -48,7 +48,7 @@ services:
       - KIE_MAVEN_REPO=http://drools-workbench:8080/business-central/maven2
     depends_on:
       - "drools-workbench"
-    command: ["/wait-for-workbench.sh"]
+    command: ["bash", "/wait-for-workbench.sh"]
   # KIE Execution server service 3
   kie-server-3:
     # Define image
@@ -67,4 +67,4 @@ services:
       - KIE_MAVEN_REPO=http://drools-workbench:8080/business-central/maven2
     depends_on:
       - "drools-workbench"
-    command: ["/wait-for-workbench.sh"]
+    command: ["bash", "/wait-for-workbench.sh"]
