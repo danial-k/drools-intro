@@ -50,7 +50,7 @@ curl --request POST \
   --header 'Content-Type: application/json' \
   --data '{"name": "ExampleProject", "description": "Example Project", "gitURL": "https://github.com/danial-k/drools-sample.git"}'
 ```
-The project should then be visible in the Business Central UI.  For further information on the Business Central UI, consult the [Business Central Integration chapter](https://docs.jboss.org/drools/release/7.18.0.Final/drools-docs/html_single/index.html#knowledge-store-rest-api-con_decision-tables) of the Drools documentation.
+The project should then be visible in the Business Central UI.  For further information on the Business Central UI, consult the [Business Central Integration chapter](https://docs.jboss.org/drools/release/7.23.0.Final/drools-docs/html_single/index.html#knowledge-store-rest-api-con_decision-tables) of the Drools documentation.
 
 ### Build and deploy to Execution Servers
 Once a project has been built using Business Central's internal Maven build tooling, the JARs will be available at ```/business-central/maven2/```
