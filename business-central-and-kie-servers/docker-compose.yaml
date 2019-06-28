@@ -7,14 +7,14 @@ services:
   # Business Central Workbench service
   drools-workbench:
     # Define image
-    image: "jboss/drools-workbench-showcase:7.18.0.Final"
+    image: "jboss/drools-workbench-showcase:7.23.0.Final"
     # Publish ports to host
     ports:
       - "3930:8080"
   # KIE Execution server service 1
   kie-server-1:
     # Define image
-    image: "jboss/kie-server-showcase:7.18.0.Final"
+    image: "jboss/kie-server-showcase:7.23.0.Final"
     # Publish ports to host
     ports:
       - "3931:8080"
@@ -33,7 +33,7 @@ services:
   # KIE Execution server service 2
   kie-server-2:
     # Define image
-    image: "jboss/kie-server-showcase:7.18.0.Final"
+    image: "jboss/kie-server-showcase:7.23.0.Final"
     # Publish ports to host
     ports:
       - "3932:8080"
@@ -52,7 +52,7 @@ services:
   # KIE Execution server service 3
   kie-server-3:
     # Define image
-    image: "jboss/kie-server-showcase:7.18.0.Final"
+    image: "jboss/kie-server-showcase:7.23.0.Final"
     # Publish ports to host
     ports:
       - "3933:8080"
