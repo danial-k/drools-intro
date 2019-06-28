@@ -7,7 +7,7 @@ services:
   # Business Central Workbench service
   drools-workbench:
     # Define image
-    image: "jboss/drools-workbench-showcase:7.23.0.Final"
+    image: "jboss/drools-workbench-showcase:7.18.0.Final"
     # Publish ports to host
     ports:
       - "3930:8080"
